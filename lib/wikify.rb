@@ -5,6 +5,7 @@ require "wikify/version_number"
 require 'active_record'
 
 # Internal Requires
+require "wikify/child_methods"
 require "wikify/methods"
 require "wikify/model"
 require "wikify/version_concern"

@@ -53,5 +53,25 @@ describe "Working logically" do
     
     david = Parent.find(parent_id)
     david.name.should eq "David" # And now hes back! and at the same ID as before!
+    
+    # David has now had a child (Like Arnie did in Junior)
+    david = Parent.find(parent_id)
+    
+    david.versions.count.should eq 6 # David should have 6 versions at this point
+    
+    jeff = david.children.new({name: "Jeff"})
+    jeff.save
+    
+    david.versions.count.should eq 7 # Now that Jeff has been saved David should have 7 versions
+    
+    # Turns out Jeff is a girl, name change needed
+    jeff = Child.find_by_name("Jeff")
+    jeff.name = "Jasmine"
+    jeff.save
+    
+    jeff.parent.versions.count.should eq 8 # That change should be recorded in the parent
+    
+    jeff.versions.count.should eq 2
+    
   end
 end

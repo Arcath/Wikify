@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Parent do
   it "Should have the wikify method" do
-    Parent._create_callbacks.length.should eq 1
-    Parent._update_callbacks.length.should eq 1
+    Parent._create_callbacks.length.should eq 2
+    Parent._update_callbacks.length.should eq 2
     Parent._destroy_callbacks.length.should eq 1
   end
   

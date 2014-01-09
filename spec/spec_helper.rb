@@ -11,6 +11,7 @@ require 'wikify'
 require 'models/parent'
 require 'models/document'
 require 'models/revision'
+require 'models/child'
 
 # Configure Active Record
 require 'sqlite3'

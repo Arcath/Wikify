@@ -25,11 +25,13 @@ module Wikify
     end
     
     def restore_type
-      self.send(self.attributes.keys.select {|i| i =~ /_type/ }.first.to_sym)
+      return self.send(self.attributes.keys.select {|i| i =~ /_type/ }.first.to_sym) unless self.linked_child == true
+      return self.send(self.attributes.keys.select {|i| i =~ /linked_child_.*?_type/ }.first.to_sym)
     end
     
     def restore_id
-      self.send(self.attributes.keys.select {|i| i =~ /_id/ }.first.to_sym)
+      return self.send(self.attributes.keys.select {|i| i =~ /_id/ }.first.to_sym) unless self.linked_child == true
+      return self.send(self.attributes.keys.select {|i| i =~ /linked_child_.*?_id/ }.first.to_sym)
     end
   end
 end

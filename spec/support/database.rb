@@ -13,10 +13,20 @@ ActiveRecord::Schema.define do
     table.timestamps
   end
   
+  create_table :children do |table|
+    table.column :name, :string
+    table.column :parent_id, :integer
+    
+    table.timestamps
+  end
+  
   create_table :versions do |table|
     table.column :resource_id, :integer
     table.column :resource_type, :string
     table.column :data, :text
+    table.column :linked_child_resource_type, :string
+    table.column :linked_child_resource_id, :integer
+    table.column :linked_child, :boolean, default: false
     table.column :event, :string
     
     table.timestamps
@@ -25,6 +35,9 @@ ActiveRecord::Schema.define do
   create_table :revisions do |table|
     table.column :thing_id, :integer
     table.column :thing_type, :string
+    table.column :linked_child_thing_id, :integer
+    table.column :linked_child_thing_type, :string
+    table.column :linked_child, :boolean, default: false
     table.column :data, :text
     table.column :event, :string
     
@@ -45,6 +58,7 @@ puts "---------------"
 describe "The Database" do
   it "should be empty" do
     Parent.all.count.should eq 0
+    Child.all.count.should eq 0
   end
   
   it "should work" do

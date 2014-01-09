@@ -21,6 +21,7 @@ module Wikify
         options[:assoc_name] ||=  :versions
         options[:assoc_as] ||= :resource
         options[:assoc_model] ||= "Wikify::Version"
+        options[:no_include] ||= false
         
         # Store the Options Hash
         self.wikify_options = options.dup
@@ -38,8 +39,18 @@ module Wikify
         define_method(wikify_options[:assoc_name]){
           wikify_options[:assoc_model].constantize.where(wikify_search_hash)
         }
+                
+        include Wikify::Methods unless options[:no_include]
+      end
+      
+      # Takes the same options as wikify
+      def wikify_on_parent(parent, options = {})
+        wikify(options.merge({no_include: true}))
         
-        include Wikify::Methods
+        class_attribute :wikify_parent
+        self.wikify_parent = parent
+        
+        include Wikify::ChildMethods
       end
     end
   end

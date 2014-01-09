@@ -1,6 +1,6 @@
 # Wikify
 
-TODO: Write a gem description
+Active Record model versioning.
 
 ## Installation
 
@@ -18,7 +18,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To enable wikify on your models add `wikify` to your model class e.g.
+
+``` ruby
+class Foo < ActiveRecord::Base
+  wikify
+end
+```
 
 ## Contributing
 

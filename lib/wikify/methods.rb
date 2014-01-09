@@ -10,21 +10,21 @@ module Wikify
     end
     
     def wikify_update
-      new_version = wikify_options[:assoc_model].constantize.new(wikify_search_hash)
+      new_version = self.send(wikify_options[:assoc_name]).new
       new_version.data = @wikify_cached_object
       new_version.event = (@wikify_override[:event] || "update")
       new_version.save
     end
     
     def wikify_create
-      new_version = wikify_options[:assoc_model].constantize.new(wikify_search_hash)
+      new_version = self.send(wikify_options[:assoc_name]).new
       new_version.event = "create"
       new_version.save
       @wikify_cached_object = self.attributes
     end
     
     def wikify_destroy
-      new_version = wikify_options[:assoc_model].constantize.new(wikify_search_hash)
+      new_version = self.send(wikify_options[:assoc_name]).new
       new_version.data = @wikify_cached_object
       new_version.event = "destroy"
       new_version.save

@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Adam Laycock"]
   spec.email         = ["adam@arcath.net"]
   spec.description   = %q{Active Record Model history/versioning with restore functionality.}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.summary       = %q{Active Record Model history/versioning with restore functionality.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
