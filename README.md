@@ -28,7 +28,6 @@ Wikify has a built in generator for creating the migration which can be run usin
     $ rake db:migrate
 
 You will now have a table for your versions, wikify contains a model for the versions which is uses by default
-```
 
 ## Usage
 
