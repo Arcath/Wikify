@@ -28,6 +28,7 @@ ActiveRecord::Schema.define do
     table.column :linked_child_resource_id, :integer
     table.column :linked_child, :boolean, default: false
     table.column :event, :string
+    table.column :comitter_id, :integer
     
     table.timestamps
   end
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define do
     table.column :linked_child, :boolean, default: false
     table.column :data, :text
     table.column :event, :string
+    table.column :comitter_id, :integer
     
     table.timestamps
   end

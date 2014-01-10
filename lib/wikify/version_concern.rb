@@ -4,6 +4,8 @@ module Wikify
     
     included do
       serialize :data, Hash
+      
+      before_save :record_comitter
     end
     
     def restore
@@ -32,6 +34,10 @@ module Wikify
     def restore_id
       return self.send(self.attributes.keys.select {|i| i =~ /_id/ }.first.to_sym) unless self.linked_child == true
       return self.send(self.attributes.keys.select {|i| i =~ /linked_child_.*?_id/ }.first.to_sym)
+    end
+    
+    def record_comitter
+      self.comitter_id = Wikify.user_id if Wikify.user_id != nil
     end
   end
 end

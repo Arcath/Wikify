@@ -4,8 +4,13 @@ SimpleCov.start do
   add_filter "spec"
 end
 
+# Controller
+require 'support/controller'
+
 # Require Gem
 require 'wikify'
+
+ActionController::Base.load
 
 # Require Models
 require 'models/parent'
