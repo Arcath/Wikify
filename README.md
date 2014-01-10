@@ -6,6 +6,8 @@ Active Record model versioning.
 
 ## Installation
 
+### Adding the Gem
+
 Add this line to your application's Gemfile:
 
     gem 'wikify'
@@ -17,16 +19,30 @@ And then execute:
 Or install it yourself as:
 
     $ gem install wikify
+    
+### Migration
+
+Wikify has a built in generator for creating the migration which can be run using:
+
+    $ rails g wikify:migration
+    $ rake db:migrate
+
+You will now have a table for your versions, wikify contains a model for the versions which is uses by default
+```
 
 ## Usage
 
-To enable wikify on your models add `wikify` to your model class e.g.
+To enable wikify on your models add `wikify` to your model class:
 
 ``` ruby
-class Foo < ActiveRecord::Base
+class Article < ActiveRecord::Base
   wikify
 end
 ```
+
+Your model now has version tracking!
+
+For an example of how Wikify works see the [Logical Function Spec](https://github.com/Arcath/Wikify/blob/master/spec/logical_function_spec.rb) which is a commented example of all the functionality (that gets tested with every push).
 
 ## Contributing
 

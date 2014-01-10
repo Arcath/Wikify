@@ -71,7 +71,7 @@ describe "Working logically" do
     
     jeff.parent.versions.count.should eq 8 # That change should be recorded in the parent
     
-    jeff.versions.count.should eq 2
+    jeff.versions.count.should eq 2 # Children's versions search the parent for versions related to them.
     
   end
 end
