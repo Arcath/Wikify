@@ -1,14 +1,7 @@
 module Wikify
+  # Methods included by child models
   module ChildMethods
-    def wikify_cache
-      @wikify_override = {}
-      @wikify_cached_object = self.attributes
-    end
-    
-    def wikify_override(options)
-      @wikify_override = options
-    end
-    
+    # Records an update operation against the parent
     def wikify_update
       new_version = new_version_instance
       new_version.data = @wikify_cached_object
@@ -16,6 +9,7 @@ module Wikify
       new_version.save
     end
     
+    # Records a create operation against the parent
     def wikify_create
       new_version = new_version_instance
       new_version.event = "child create"
@@ -23,6 +17,7 @@ module Wikify
       @wikify_cached_object = self.attributes
     end
     
+    # Records a destroy operation against the parent
     def wikify_destroy
       new_version = new_version_instance
       new_version.data = @wikify_cached_object

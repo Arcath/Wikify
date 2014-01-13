@@ -13,17 +13,25 @@ require "wikify/model"
 require "wikify/version_concern"
 require "wikify/version"
 
+# Wikify
+#
+# Model Versioning for ActiveRecord
 module Wikify
+  # Searches the version table for destroy events, takes an optional id when you know exactly what you are looking for.
+  #
+  #    Wikify.destroyed_versions(Model, 10)
   def self.destroyed_versions(model, id = nil)
     hash =  {"#{model.wikify_options[:assoc_as]}_type".to_sym => model.to_s, event: "destroy"}
     hash["#{model.wikify_options[:assoc_as]}_id".to_sym] = id if id
     model.wikify_options[:assoc_model].constantize.where(hash)
   end
   
+  # Stores the current users id within the current thread (lets us get it from the controller)
   def self.set_user_id(id)
     thread_store.user_id = id
   end
   
+  # Returns the stored id
   def self.user_id
     thread_store.user_id
   end

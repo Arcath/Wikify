@@ -8,6 +8,9 @@ module Wikify
       before_save :record_comitter
     end
     
+    # Finds the model/instance to restore to and then over writes all its data.
+    #
+    # Also over rides the version event to restore so you can tell the difference between a restore and an update in your history.
     def restore
       unless event == "destroy"
         target = restore_to
@@ -22,6 +25,7 @@ module Wikify
       end
     end
     
+    # Finds the model to restore type
     def restore_to
       restore_type.constantize.find(restore_id)
     end
@@ -36,6 +40,7 @@ module Wikify
       return self.send(self.attributes.keys.select {|i| i =~ /linked_child_.*?_id/ }.first.to_sym)
     end
     
+    # Gets the comitter from the Wikify thread store
     def record_comitter
       self.comitter_id = Wikify.user_id if Wikify.user_id != nil
     end

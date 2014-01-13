@@ -4,6 +4,19 @@ module Wikify
       base.extend ClassMethods
     end
     
+    # Caches the model
+    #
+    # Called using the `after_find` callback in ActiveRecord
+    def wikify_cache
+      @wikify_override = {}
+      @wikify_cached_object = self.attributes
+    end
+    
+    # Allows you override the wikify options for this event
+    def wikify_override(options)
+      @wikify_override = options
+    end
+    
     module ClassMethods
       # Enables the wikify functionality on the model
       #
