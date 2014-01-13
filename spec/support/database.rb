@@ -20,7 +20,7 @@ ActiveRecord::Schema.define do
     table.timestamps
   end
   
-  create_table :versions do |table|
+  create_table :wikify_versions do |table|
     table.column :resource_id, :integer
     table.column :resource_type, :string
     table.column :data, :text
