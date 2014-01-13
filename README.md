@@ -2,7 +2,7 @@
 
 Active Record model versioning.
 
-[![Build Status](https://travis-ci.org/Arcath/Wikify.png?branch=master)](https://travis-ci.org/Arcath/Wikify) | [![Code Climate](https://codeclimate.com/github/Arcath/Wikify.png)](https://codeclimate.com/github/Arcath/Wikify) | [![Coverage Status](https://coveralls.io/repos/Arcath/Wikify/badge.png)](https://coveralls.io/r/Arcath/Wikify)
+[![Build Status](https://travis-ci.org/Arcath/Wikify.png?branch=master)](https://travis-ci.org/Arcath/Wikify) | [![Code Climate](https://codeclimate.com/github/Arcath/Wikify.png)](https://codeclimate.com/github/Arcath/Wikify) | [![Coverage Status](https://coveralls.io/repos/Arcath/Wikify/badge.png)](https://coveralls.io/r/Arcath/Wikify) | [RDoc](http://rubydoc.info/github/Arcath/Wikify/master/frames)
 
 ## Installation
 
