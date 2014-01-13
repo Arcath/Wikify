@@ -1,6 +1,9 @@
 # Version Number
 require "wikify/version_number"
 
+# System
+require 'ostruct' #Required for ruby 1.9.3
+
 # Gems
 require 'active_record'
 require 'active_support'
