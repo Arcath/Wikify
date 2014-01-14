@@ -17,6 +17,10 @@ module Wikify
       @wikify_override = options
     end
     
+    def version_at(time)
+      self.versions.where("created_at < ?", time).limit(1).first.next
+    end
+    
     module ClassMethods
       # Enables the wikify functionality on the model
       #

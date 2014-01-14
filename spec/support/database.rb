@@ -3,6 +3,7 @@ ActiveRecord::Base.establish_connection(
   :database => ':memory:'
 )
 
+puts "---------------"
 puts "Database Creation"
 puts "---------------"
 

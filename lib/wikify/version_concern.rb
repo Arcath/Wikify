@@ -8,6 +8,20 @@ module Wikify
       before_save :record_comitter
     end
     
+    def object
+      OpenStruct.new(data)
+    end
+    
+    def previous
+      self.class.where("created_at < ?", self.created_at).limit(1).first
+    end
+    
+    def next
+      results = self.class.where("created_at > ?", self.created_at).limit(1)
+      return results.first if results != []
+      return self.restore_to
+    end
+    
     # Finds the model/instance to restore to and then over writes all its data.
     #
     # Also over rides the version event to restore so you can tell the difference between a restore and an update in your history.
