@@ -43,7 +43,24 @@ Your model now has version tracking!
 
 For an example of how Wikify works see the [Logical Function Spec](https://github.com/Arcath/Wikify/blob/master/spec/logical_function_spec.rb) which is a commented example of all the functionality (that gets tested with every push).
 
-# Has-Many version tracking
+## Restoring a Version
+
+Versions have a handy `restore` method that lets you very quickly and easily restore a version over the current/target model. A version stores the model & id when it gets created when you call `restore` Wikify finds the model with the stored id and then overwrites all its attributes with the ones in the versions cache.
+
+### Restoring a deleted version
+
+You can restore a deleted versions by using the `Wikify.destroyed_versions` method. You must supply a model and optionally an id e.g.
+
+``` ruby
+Wikify.destroyed_versions(Article)
+#> An list of versions where event is "destroy" and model is "Article"
+Wikify.destroyed_versions(Article, 2)
+#> The destory events for the given article only
+```
+
+### Associations
+
+#### Has-Many
 
 Wikify can track the versions of child objects, for example a comments model attached to that articles model:
 
