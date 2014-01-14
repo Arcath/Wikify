@@ -20,4 +20,8 @@ describe "User id storing" do
     parent.versions.count.should eq 2
     parent.versions.last.comitter_id.should eq 1
   end
+  
+  it "should handle the current_user return being nil" do
+    lambda { controller = NilController.new }.should_not raise_exception
+  end
 end

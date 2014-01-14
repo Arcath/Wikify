@@ -17,7 +17,7 @@ module Wikify
     
     # The before filter method that stores the user id in Wikify
     def set_wikify_user
-      Wikify.set_user_id(current_user_wikify.id)
+      Wikify.set_user_id(current_user_wikify.id) if current_user_wikify != nil
     end
   end
 end

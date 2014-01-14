@@ -27,3 +27,19 @@ class Controller < ActionController::Base
     parent.save
   end
 end
+
+class NilController < ActionController::Base
+  def initialize
+    set_wikify_user
+  end
+  
+  def current_user
+    nil
+  end
+  
+  def request
+    parent = Parent.find_by_name("Committer 1")
+    parent.name = "Committer 1 Updated"
+    parent.save
+  end
+end
